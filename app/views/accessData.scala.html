@@ -1,0 +1,22 @@
+@import models.AccessData
+
+@(accessData: Seq[AccessData])
+
+@main("Zugriffsdaten") {
+<h2> Zugriffsdaten</h2>
+@accessData.map { access =>
+<div>Zugriffszeit: @access.time          IP-Adresse : @access.ip</div>
+}
+<p>
+    <a href="weather">Wetter Hagen</a>
+</p>
+<p>
+    <a href="tasks">Todo Liste</a>
+</p>
+<p>
+    <a href="accessData">Requests</a>
+</p>
+
+}
+
+

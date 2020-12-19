@@ -1,0 +1,25 @@
+@import helper._
+@(maybeErrorMessage: Option[String])(implicit request: RequestHeader)
+<html lang="en">
+<head>
+    <title>Login page</title> <link rel="stylesheet"
+                                    href="@routes.Assets.versioned("compiled/styles.css")"> <link rel="shortcut icon" type="image/png"
+                                                                                                  href="@routes.Assets.versioned("images/favicon.png")"> </head>
+<body>
+<form method="post" action="@{CSRF(routes.TaskController.doLogin())}">
+    <fieldset> <legend>Login</legend>
+        @maybeErrorMessage.map { errorMessage =>
+        <span class = "label bg--error">@errorMessage</span>
+        }
+        <p>
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" /> </p>
+        <p>
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password" />
+        </p>
+        <button type="submit" class="button--sm">Login</button> </fieldset>
+</form> </body>
+</html>
+
+

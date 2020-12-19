@@ -1,0 +1,25 @@
+@import models.FootballClub
+@(table: Seq[FootballClub])
+
+@main("Bundesliga Tabelle") {
+<table border = "1">
+    @table.map { team =>
+    <tr>
+        <td> @team.name </td> <td> <img src=@team.picPath alt="team_icon" style="max-width:32px;max-height:32px;"></td>
+    </tr>
+    }
+</table>
+
+<p>
+    <a href="weather">Wetter Hagen</a>
+</p>
+<p>
+    <a href="tasks">Todo Liste</a>
+</p>
+<p>
+    <a href="accessData">Requests</a>
+</p>
+
+}
+
+

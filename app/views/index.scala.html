@@ -1,0 +1,48 @@
+@import helper._ // https://www.playframework.com/documentation/2.8.x/ScalaCsrf
+@import play.filters.csrf.CSRF.Token
+@import models.Task
+@(tasks: List[Task], timeStr: String)(implicit request: RequestHeader)
+
+@main("Todo Liste") {
+  <h2>Todo Liste</h2>
+    <div>Tag und Uhrzeit: @timeStr</div>
+    <p>
+      <div>
+        <form action="@{CSRF(routes.TaskController.newTask())}" method="post">
+          <input typ="text" name="taskName" placeholder="Add a new Task" required>
+          <input type="submit" value="Add">
+        </form>
+      </div>
+    </p>
+    <table border = "1">
+      @{ tasks match {
+          case Nil =>
+          case _ => <tr>
+                      <td><b>Task name</b></td><td></td>
+                    </tr>
+          }
+      }
+
+      @tasks.map { task =>
+        <tr>
+          <td> @task.name </td>
+          <td>
+            <button onclick="deleteTask (@{task.id}, &quot @{play.filters.csrf.CSRF.getToken.get.value} &quot)">
+              Remove
+            </button>
+          </td>
+        </tr>
+      }
+    </table>
+    </div>
+<p>
+  <a href="weather">Wetter Hagen</a>
+</p>
+<p>
+  <a href="tasks">Todo Liste</a>
+</p>
+<p>
+  <a href="accessData">Requests</a>
+</p>
+
+}
