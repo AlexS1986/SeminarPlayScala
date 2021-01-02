@@ -118,68 +118,16 @@ class TaskController (controllerComponents: ControllerComponents,
     requestsF
   }
 
-
   def priv() = userAuthAction {
     userRequest: UserAuthRequest[AnyContent] =>
       Ok(views.html.priv(userRequest.user))
   }
 
-/*
-  private def extractUser(req: RequestHeader): Option[User] = {
-
-    val sessionTokenOpt = req.session.get("sessionToken")
-
-    println(sessionTokenOpt)
-
-    sessionTokenOpt
-      .flatMap(token => Session.getSession(token))
-      .filter(_.expiration.isAfter(LocalDateTime.now()))
-      .map(_.username)
-      .flatMap(UserDAO.getUser)
-  } */
-
- /* def priv() = userAction { userRequest: UserRequest[AnyContent] =>Ok(views.html.priv(userRequest.user.get))
-  } */
-
-  /*
-  def login_request() = userAction {
-    userRequest: UserRequest[AnyContent] => {
-      println("Body: " + userRequest.body)
-
-      // not nice do better
-      val list1 = userRequest.body.asFormUrlEncoded.get.get("username").get(0)
-      val list2 = userRequest.body.asFormUrlEncoded.get.get("password").get(0)
-
-
-      Redirect(routes.TaskController.login(list1, list2))
-      //Redirect(routes.TaskController.login(list1, list2))
-      /*userRequest.body.asFormUrlEncoded match {
-        case Some(map) => {
-          map.get("")
-        }
-      } */
-      //Redirect(routes.TaskController.login("hans", "peter"))
-    }
-  }*/
 
   def login_page = Action {
     implicit request =>
     Ok(views.html.login_page(None))
   }
-
-  /*def login(username: String, pass: String) = Action { implicit request: Request[AnyContent] =>
-    if (isValidLogin(username, pass)) {
-      val token = Session.generateToken(username)
-
-      Redirect(routes.TaskController.priv()).withSession(request.session + ("sessionToken" -> token))
-    } else {
-      Ok(views.html.login_page())
-    }
-  }
-
-  private def isValidLogin(username: String, password: String): Boolean = {
-    UserDAO.getUser(username).exists(_.password == password)
-  } */
 
 
   def doLogin = Action {
