@@ -31,12 +31,10 @@ class AppApplicationLoader extends ApplicationLoader {
     }
     new AppComponents(context).application
 
-
     /*LoggerConfigurator(context.environment.classLoader).foreach { cfg => cfg.configure(context.environment)
     }
     new AppComponents(context).application */
   }
-
 }
 
 class AppComponents(context: Context) extends BuiltInComponentsFromContext(context) with AhcWSComponents
@@ -68,7 +66,6 @@ class AppComponents(context: Context) extends BuiltInComponentsFromContext(conte
   lazy val authService = new AuthService(defaultCacheApi.sync) // EhCache authentification
 
   applicationLifecycle.addStopHook{
-
         //logging
         val loggerINFOLevel = Logger("play")
         () => loggerINFOLevel.info("Application is about to stop.")
@@ -77,7 +74,6 @@ class AppComponents(context: Context) extends BuiltInComponentsFromContext(conte
           //
           applicationEvolutions // calls evolution script DB
           DBs.closeAll()
-
 
         Future.successful()
   }
