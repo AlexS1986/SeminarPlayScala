@@ -20,4 +20,5 @@ http://localhost:9000/ verfügbar.
 
 
 [1] Denis Kalinin, Modern Web Development With Scala
+
 [2] Shiti Saxena, Mastering Play Framework for Scala
