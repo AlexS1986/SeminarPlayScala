@@ -15,7 +15,7 @@ lauten.
 Das folgende Video https://www.youtube.com/watch?v=xaWlS9HtWYw gibt dazu eine knappe und ausreichende Einführung.
 
 
-Anschließend kann die Anwendung gestartet werden, indem im Wurzelverzeichnis über die Konsole "sbt run" eingegeben wird. Die Anwendung ist dann im Browser unter der URL
+Anschließend kann die Anwendung gestartet werden, indem im Wurzelverzeichnis über die Konsole "sbt run" eingegeben wird. Dazu muss das Build Tool sbt auf dem Rechner installiert sein. Die Anwendung ist dann im Browser unter der URL
 http://localhost:9000/ verfügbar.
 
 
